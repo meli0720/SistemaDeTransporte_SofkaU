@@ -8,15 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-    public class BusRepository {
-        private List<Bus> buses = new ArrayList<>();
+    public interface BusRepository {
+       List<Bus> getBuses();
 
-        public void addBus(Bus bus) {
-            buses.add(bus);
-        }
 
-        public List<Bus> getAllBuses() {
-            return buses;
-        }
+        void addBus(Bus bus);
     }
 

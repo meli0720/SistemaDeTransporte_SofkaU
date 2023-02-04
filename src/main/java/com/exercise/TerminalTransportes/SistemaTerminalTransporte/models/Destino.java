@@ -21,6 +21,9 @@ public class Destino {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo");
+        }
         this.nombre = nombre;
     }
 }

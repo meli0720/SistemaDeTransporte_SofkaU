@@ -12,15 +12,13 @@ public class RegistroViajesService {
 
         private ArrayList<Registro_Viajes> registros = new ArrayList<>();
 
-        public void addRegistroViaje(Registro_Viajes registroViaje) {
+        public void addRegistro(Registro_Viajes registroViaje) {
             registros.add(registroViaje);
         }
 
-        public ArrayList<Registro_Viajes> getRegistros() {
+        public ArrayList<Registro_Viajes> getAllRegistros() {
             return registros;
         }
 
-    public ArrayList<Registro_Viajes> getAllRegistros() {
-        return null;
-    }
+
 }

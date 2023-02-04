@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 @SpringBootApplication
 public class SistemaTerminalTransporteApplication {
@@ -74,9 +75,7 @@ public class SistemaTerminalTransporteApplication {
 
                     System.out.println("--- Destinos disponibles ---");
                     if (!destinos.isEmpty()) {
-                        for (int i = 0; i < destinos.size(); i++) {
-                            System.out.println((i + 1) + ". " + destinos.get(i).getNombre());
-                        }
+                        destinos.stream().forEach(d -> System.out.println((destinos.indexOf(d) + 1) + ". " + d.getNombre()));
                         System.out.print("Seleccione un destino: ");
                         int destinoElegidoIndex = sc.nextInt();
                         if (destinoElegidoIndex > 0 && destinoElegidoIndex <= destinos.size()) {
@@ -86,6 +85,10 @@ public class SistemaTerminalTransporteApplication {
                         }
                     } else {
                         System.out.println("No hay destinos disponibles.");
+                    }
+                    if (destinoElegido.isEmpty()) {
+                        System.out.println("No se ha seleccionado destino");
+                        break;
                     }
 
 
@@ -111,9 +114,8 @@ public class SistemaTerminalTransporteApplication {
                     }
 
                     System.out.println("Buses disponibles: ");
-                    for (Bus bus : buses) {
-                        System.out.println(bus.getId() + ". " + bus.getModelo());
-                    }
+                    IntStream.range(0, buses.size())
+                            .forEach(i -> System.out.println((i + 1) + ". " + buses.get(i).getModelo()));
                     System.out.print("Seleccione bus: ");
                     int bus_id = sc.nextInt();
                     Bus bus_elegido = buses.get(bus_id - 1);
@@ -168,13 +170,15 @@ public class SistemaTerminalTransporteApplication {
             System.out.println("No hay registros de viajes disponibles.");
         } else {
             System.out.println("--- Registro de viajes ---");
-            for (int i = 0; i < registros.size(); i++) {
-                Registro_Viajes registro = registros.get(i);
-                System.out.println((i + 1) + ". Destino: " + registro.getDestino() + ", Horario: " + registro.getHorario().toString() + ", Bus: " + registro.getBus().toString());
-            }
+            IntStream.range(0, registros.size())
+                    .forEach(i -> {
+                        Registro_Viajes registro = registros.get(i);
+                        System.out.println((i + 1) + ". Destino: " + registro.getDestino() + ", Horario: " + registro.getHorario().toString() + ", Bus: " + registro.getBus().toString());
+                    });
         }
     }
-}
+    }
+
 
 
 

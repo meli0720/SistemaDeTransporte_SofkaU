@@ -3,20 +3,14 @@ package com.exercise.TerminalTransportes.SistemaTerminalTransporte.repositories;
 
 import com.exercise.TerminalTransportes.SistemaTerminalTransporte.models.Registro_Viajes;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-    public class RegistroViajesRepository {
-        private List<Registro_Viajes> registros = new ArrayList<>();
+    public interface RegistroViajesRepository {
+         List<Registro_Viajes> registros();
 
-        public void addRegistro(Registro_Viajes registro) {
-            registros.add(registro);
-        }
+         void addRegistro(Registro_Viajes registro);
 
-        public List<Registro_Viajes> getAllRegistros() {
-            return registros;
-        }
+         List<Registro_Viajes> getAllRegistros();
     }
 

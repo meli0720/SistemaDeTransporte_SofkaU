@@ -5,16 +5,24 @@ import com.exercise.TerminalTransportes.SistemaTerminalTransporte.models.Bus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BusService {
-    private ArrayList<Bus> buses = new ArrayList<>();
 
-    public void addBus(String id, String modelo, int capacidad) {
-        buses.add(new Bus(id, modelo, capacidad));
+    private List<Bus> buses;
+
+    public BusService(){
+        this.buses= new ArrayList<>();
     }
 
-    public ArrayList<Bus> getBuses() {
+
+
+    public void addBus(Bus bus){
+        buses.add(bus);
+    }
+
+    public List<Bus> getBuses() {
         return buses;
     }
 }
